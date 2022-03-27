@@ -1,0 +1,137 @@
+### Create an ingredient
+POST http://localhost:3000/ingredients HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Black Beans",
+    "unit": "Can",
+    "quantityAvailable": 4,
+    "price": 0.89
+}
+
+### Create another ingredient
+POST http://localhost:3000/ingredients HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Brown Rice",
+    "unit": "Bag",
+    "quantityAvailable": 1.2,
+    "price": 3
+}
+
+### Retrieve should return the 2 exercises we just created
+GET http://localhost:3000/ingredients HTTP/1.1
+
+### Edit the Black Beans.
+### NOTE: Set ID to the ID for the Black Beans
+PUT http://localhost:3000/ingredients/623f920bf6a0691280b967ea HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Black Beans",
+    "unit": "Can",
+    "quantityAvailable": 3,
+    "price": 0.89
+}
+
+### Verify that quantity value for the Black Beans is now 3
+GET http://localhost:3000/ingredients HTTP/1.1
+
+### Delete the Black Beans
+### NOTE: Set ID to the ID for the Black Beans
+DELETE http://localhost:3000/ingredients/623fb12a7b8d8e498becbeec HTTP/1.1
+
+### Verify that the Black Beans have been deleted
+GET http://localhost:3000/ingredients HTTP/1.1
+
+### Create an ingredient
+POST http://localhost:3000/ingredients HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Black Beans",
+  "unit": "Can",
+  "quantityAvailable": 4,
+  "price": 0.89
+}
+
+### Verify that the Black Beans have been added
+GET http://localhost:3000/ingredients HTTP/1.1
+
+### Create a recipe
+### NOTE: Set ingredient ID to the ID for the Black Beans
+POST http://localhost:3000/recipes HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Beans and Rice",
+  "ingredients": [
+    {
+      "ingredient": "623fa4a95f8fec8eb67c8659",
+      "quantityNeeded": 3
+    }
+  ]
+}
+
+### Verify that the Recipe has been added
+GET http://localhost:3000/recipes HTTP/1.1
+
+### Update the Recipe
+### NOTE: Set ingredient IDs to the IDs for the Black Beans and Brown Rice
+PUT http://localhost:3000/recipes/623fb34e7b8d8e498becbefe HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Beans and Rice",
+    "ingredients": [
+        {
+            "ingredient": "623fa4a95f8fec8eb67c8659",
+            "quantityNeeded": 3
+        },
+        {
+            "ingredient": "623fa4b25f8fec8eb67c865b",
+            "quantityNeeded": 1
+        }
+    ]
+}
+
+### Delete the Recipe
+### NOTE: Set ID to the ID for the Recipe
+DELETE http://localhost:3000/recipes/623fb34e7b8d8e498becbefe HTTP/1.1
+
+### Verify that the Recipe has been deleted
+GET http://localhost:3000/recipes HTTP/1.1
+
+### Create a Recipe
+### NOTE: Set ingredient IDs to the IDs for the Black Beans and Brown Rice
+POST http://localhost:3000/recipes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Beans and Rice",
+    "ingredients": [
+        {
+            "ingredient": "623fa4a95f8fec8eb67c8659",
+            "quantityNeeded": 3
+        },
+        {
+            "ingredient": "623fa4b25f8fec8eb67c865b",
+            "quantityNeeded": 1
+        }
+    ]
+}
+
+### Create a List
+### NOTE: Set recipe ID to the ID for the Beans and Rice
+POST http://localhost:3000/list HTTP/1.1
+content-type: application/json
+
+{
+    "recipes": [
+        "623fb1737b8d8e498becbef4"
+    ]
+}
+
+### Verify that the List has been created
+GET http://localhost:3000/list HTTP/1.1
