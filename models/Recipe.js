@@ -7,11 +7,8 @@ const RecipeSchema = new Schema({
     {
       ingredient: { type: Schema.Types.ObjectId, ref: "Ingredient" },
       quantityNeeded: { type: Number, required: true },
-      quantityMissing: { type: Number, required: true },
-      ingredientPrice: { type: Number, required: true },
     },
   ],
-  recipePrice: { type: Number, required: true },
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);

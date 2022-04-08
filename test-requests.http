@@ -109,7 +109,7 @@ POST http://localhost:3000/recipes HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Beans and Rice",
+    "name": "Beans and Rice 2",
     "ingredients": [
         {
             "ingredient": "623fa4a95f8fec8eb67c8659",
@@ -135,3 +135,16 @@ content-type: application/json
 
 ### Verify that the List has been created
 GET http://localhost:3000/list HTTP/1.1
+
+### Update a List
+### NOTE: Set list ID to the ID for the list
+### NOTE: Set recipe IDs to the IDs for the included recipes
+PUT http://localhost:3000/list/623fb3b67b8d8e498becbf07 HTTP/1.1
+content-type: application/json
+
+{
+  "recipes": [
+    "623fb1737b8d8e498becbef4",
+    "6250b34878c31f25d1841c8b"
+  ]
+}
